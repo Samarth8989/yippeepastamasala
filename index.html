@@ -16,241 +16,659 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 107, 107, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(78, 205, 196, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 183, 77, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
         }
         
         .survey-container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            box-shadow: 
+                0 25px 50px rgba(0,0,0,0.15),
+                0 0 0 1px rgba(255,255,255,0.2);
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
         
         .survey-header {
-            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 50%, #ff9ff3 100%);
             color: white;
-            padding: 30px;
+            padding: 40px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .survey-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
         .survey-header h1 {
-            font-size: 2rem;
-            margin-bottom: 10px;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .survey-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
         }
         
         .survey-body {
-            padding: 40px;
+            padding: 50px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(248,250,252,0.9) 100%);
         }
         
         .question-container {
             display: none;
-            animation: fadeIn 0.5s ease-in;
+            animation: slideInRight 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
         .question-container.active {
             display: block;
         }
         
+        @keyframes slideInRight {
+            from { 
+                opacity: 0; 
+                transform: translateX(50px) rotateY(-15deg); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateX(0) rotateY(0deg); 
+            }
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
         .question {
-            font-size: 1.2rem;
-            color: #333;
-            margin-bottom: 25px;
-            line-height: 1.6;
+            font-size: 1.4rem;
+            color: #2d3748;
+            margin-bottom: 30px;
+            line-height: 1.7;
+            font-weight: 600;
+            text-align: center;
+            padding: 25px;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border-radius: 20px;
+            border-left: 6px solid #667eea;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
         }
         
         .options {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
         }
         
         .option {
             display: flex;
             align-items: center;
-            padding: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
+            padding: 20px 25px;
+            border: 3px solid #e2e8f0;
+            border-radius: 15px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            background: #f9f9f9;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            transition: left 0.5s;
         }
         
         .option:hover {
             border-color: #667eea;
-            background: #f0f4ff;
-            transform: translateX(5px);
+            background: linear-gradient(135deg, #f0f4ff 0%, #e6f3ff 100%);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.2);
+        }
+
+        .option:hover::before {
+            left: 100%;
         }
         
         .option.selected {
             border-color: #667eea;
-            background: #e8f2ff;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .option.selected label {
+            color: white;
         }
         
         .option input[type="checkbox"],
         .option input[type="radio"] {
-            margin-right: 15px;
-            transform: scale(1.2);
+            margin-right: 18px;
+            transform: scale(1.4);
+            accent-color: #667eea;
+        }
+
+        .option.selected input[type="checkbox"],
+        .option.selected input[type="radio"] {
+            accent-color: white;
         }
         
         .option label {
             cursor: pointer;
             flex: 1;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
         
         .navigation {
             display: flex;
             justify-content: space-between;
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid #e0e0e0;
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 2px solid #e2e8f0;
         }
         
         .btn {
-            padding: 12px 30px;
+            padding: 16px 40px;
             border: none;
-            border-radius: 25px;
-            font-size: 1rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            transition: all 0.4s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
         }
         
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
         }
         
         .btn-secondary {
-            background: #f1f3f4;
+            background: linear-gradient(135deg, #f1f3f4 0%, #e8eaed 100%);
             color: #333;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
         
         .btn-secondary:hover {
-            background: #e8eaed;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
         }
         
         .btn:disabled {
-            opacity: 0.5;
+            opacity: 0.6;
             cursor: not-allowed;
+            transform: none !important;
         }
         
         .progress-bar {
-            height: 4px;
-            background: #e0e0e0;
-            margin-bottom: 20px;
+            height: 8px;
+            background: rgba(255,255,255,0.3);
+            margin-bottom: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: loading 2s infinite;
+        }
+
+        @keyframes loading {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
         
         .progress-fill {
             height: 100%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            transition: width 0.3s ease;
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 50%, #2f855a 100%);
+            transition: width 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             width: 0%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: progress-shimmer 2s infinite;
+        }
+
+        @keyframes progress-shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
         
-        .termination-message {
-            text-align: center;
-            padding: 40px;
-            color: #e74c3c;
-            font-size: 1.2rem;
-        }
-        
+        .termination-message,
         .completion-message {
             text-align: center;
-            padding: 40px;
-            color: #27ae60;
+            padding: 60px 40px;
+            border-radius: 20px;
+            margin: 30px 0;
+        }
+
+        .termination-message {
+            background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%);
+            color: #c53030;
+            border-left: 6px solid #e53e3e;
+        }
+
+        .completion-message {
+            background: linear-gradient(135deg, #c6f6d5 0%, #9ae6b4 100%);
+            color: #2f855a;
+            border-left: 6px solid #38a169;
+        }
+
+        .termination-message h2,
+        .completion-message h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .termination-message p,
+        .completion-message p {
             font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
         }
         
         .other-input {
-            margin-top: 10px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            margin-top: 15px;
+            padding: 15px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
             width: 100%;
             display: none;
             font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .other-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
         
         .other-input.show {
             display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; max-height: 0; }
+            to { opacity: 1; max-height: 100px; }
         }
 
         .error-message {
-            color: #e74c3c;
-            background: #ffeaea;
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 15px;
+            color: #e53e3e;
+            background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%);
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-top: 20px;
             display: none;
+            font-weight: 600;
+            border-left: 4px solid #e53e3e;
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
         }
 
         .variant-images {
             display: flex;
-            gap: 20px;
+            gap: 30px;
             justify-content: center;
-            margin: 20px 0;
+            margin: 30px 0;
+            flex-wrap: wrap;
         }
 
         .variant-option {
             text-align: center;
-            padding: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
+            padding: 25px;
+            border: 3px solid #e2e8f0;
+            border-radius: 20px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .variant-option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .variant-option:hover::before {
+            transform: translateX(100%);
         }
 
         .variant-option:hover {
             border-color: #667eea;
-            transform: scale(1.05);
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
         .variant-option.selected {
             border-color: #667eea;
-            background: #e8f2ff;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.3);
         }
 
         .variant-image {
-            width: 80px;
-            height: 80px;
-            background: #f0f0f0;
-            border-radius: 8px;
-            margin-bottom: 10px;
+            width: 100px;
+            height: 100px;
+            border-radius: 15px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
-            color: #666;
+            font-size: 14px;
+            font-weight: 700;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .variant-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.8s ease;
+        }
+
+        .variant-option:hover .variant-image::after {
+            transform: translateX(100%);
         }
 
         .product-showcase {
             text-align: center;
-            margin: 20px 0;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 10px;
+            margin: 30px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
+            border-radius: 20px;
+            border: 2px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-showcase::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .product-showcase > * {
+            position: relative;
+            z-index: 1;
         }
 
         .product-showcase img {
-            max-width: 200px;
+            max-width: 250px;
             height: auto;
-            margin: 10px;
+            margin: 15px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         }
+
+        /* Enhanced mobile responsiveness */
+        @media (max-width: 768px) {
+            .survey-container {
+                margin: 10px;
+                border-radius: 20px;
+            }
+            
+            .survey-header {
+                padding: 30px 20px;
+            }
+            
+            .survey-header h1 {
+                font-size: 2rem;
+            }
+            
+            .survey-body {
+                padding: 30px 25px;
+            }
+            
+            .question {
+                font-size: 1.2rem;
+                padding: 20px;
+            }
+            
+            .options {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .option {
+                padding: 18px 20px;
+            }
+            
+            .variant-images {
+                gap: 20px;
+            }
+            
+            .variant-option {
+                padding: 20px;
+            }
+            
+            .variant-image {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .btn {
+                padding: 14px 30px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Special styling for number-only display in Q7 */
+        .q7-options .option label {
+            position: relative;
+        }
+
+        .q7-options .option label::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .q7-options .option:nth-child(1) label::before { content: '1'; }
+        .q7-options .option:nth-child(2) label::before { content: '2'; }
+        .q7-options .option:nth-child(3) label::before { content: '3'; }
+        .q7-options .option:nth-child(4) label::before { content: '4'; }
+        .q7-options .option:nth-child(5) label::before { content: '5'; }
+
+        .q7-options .option label {
+            padding-left: 40px;
+        }
+
+        /* Floating elements animation */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .floating-element:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .floating-element:nth-child(2) { left: 20%; animation-delay: 2s; }
+        .floating-element:nth-child(3) { left: 30%; animation-delay: 4s; }
+        .floating-element:nth-child(4) { left: 40%; animation-delay: 6s; }
+        .floating-element:nth-child(5) { left: 50%; animation-delay: 8s; }
+        .floating-element:nth-child(6) { left: 60%; animation-delay: 10s; }
+        .floating-element:nth-child(7) { left: 70%; animation-delay: 12s; }
+        .floating-element:nth-child(8) { left: 80%; animation-delay: 14s; }
+        .floating-element:nth-child(9) { left: 90%; animation-delay: 16s; }
     </style>
 </head>
 <body>
+    <!-- Floating background elements -->
+    <div class="floating-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
+
     <div class="survey-container">
         <div class="survey-header">
             <h1>🍝 ITC YiPPee! बाजार सर्वेक्षण</h1>
@@ -326,10 +744,10 @@
                 <div class="error-message" id="q2-error"></div>
             </div>
 
-            <!-- Question 3 -->
+            <!-- Question 3 with cohort 'g' modification -->
             <div class="question-container" data-question="3">
                 <div class="question">3. आप इनमें से कौन-कौन से पास्ता मसाला ब्रांड्स के बारे में जानते हैं?</div>
-                <div class="options">
+                <div class="options" id="q3-options">
                     <div class="option">
                         <input type="checkbox" id="q3_everest" name="q3" value="everest">
                         <label for="q3_everest">एवरेस्ट</label>
@@ -354,9 +772,14 @@
                         <input type="checkbox" id="q3_maggi" name="q3" value="maggi">
                         <label for="q3_maggi">मैगी मसाला-ए-मैजिक</label>
                     </div>
-                    <div class="option">
+                    <div class="option" id="q3_yippee_option">
                         <input type="checkbox" id="q3_yippee" name="q3" value="yippee">
                         <label for="q3_yippee">यिप्पी! पास्ता मसाला</label>
+                    </div>
+                    <!-- YiPPee noodles option for cohort g -->
+                    <div class="option" id="q3_yippee_noodles_option" style="display: none;">
+                        <input type="checkbox" id="q3_yippee_noodles" name="q3" value="yippee_noodles">
+                        <label for="q3_yippee_noodles">यिप्पी! नूडल्स</label>
                     </div>
                     <div class="option">
                         <input type="checkbox" id="q3_other" name="q3" value="other">
@@ -367,7 +790,7 @@
                 <div class="error-message" id="q3-error"></div>
             </div>
 
-            <!-- Question 4 -->
+            <!-- Question 4 (removed "कोई नहीं" option) -->
             <div class="question-container" data-question="4">
                 <div class="question">4. वर्तमान में आप इनमें से कौन सा पास्ता मसाला बेचते हैं?</div>
                 <div class="options">
@@ -404,15 +827,11 @@
                         <label for="q4_other">अन्य</label>
                         <input type="text" class="other-input" placeholder="कृपया बताएं...">
                     </div>
-                    <div class="option">
-                        <input type="checkbox" id="q4_none" name="q4" value="none">
-                        <label for="q4_none">कोई नहीं</label>
-                    </div>
                 </div>
                 <div class="error-message" id="q4-error"></div>
             </div>
 
-            <!-- Question 5 -->
+            <!-- Question 5 (removed "कोई नहीं" option) -->
             <div class="question-container" data-question="5">
                 <div class="question">5. आपने अब तक कौन सा पास्ता मसाला ब्रांड बेचना बंद कर दिया है?</div>
                 <div class="options">
@@ -448,10 +867,6 @@
                         <input type="checkbox" id="q5_other" name="q5" value="other">
                         <label for="q5_other">अन्य</label>
                         <input type="text" class="other-input" placeholder="कृपया बताएं...">
-                    </div>
-                    <div class="option">
-                        <input type="checkbox" id="q5_none" name="q5" value="none">
-                        <label for="q5_none">कोई नहीं</label>
                     </div>
                 </div>
                 <div class="error-message" id="q5-error"></div>
@@ -498,29 +913,29 @@
                 <div class="error-message" id="q6-error"></div>
             </div>
 
-            <!-- Question 7 (Dynamic) -->
+            <!-- Question 7 (Modified to show only numbers) -->
             <div class="question-container" data-question="7">
                 <div class="question" id="q7-text">7. आप <span id="q7-brand">___</span> पास्ता मसाला की हर महीने कितनी बिक्री करते हैं?</div>
-                <div class="options">
+                <div class="options q7-options">
                     <div class="option">
                         <input type="radio" id="q7_very_low" name="q7" value="very_low">
-                        <label for="q7_very_low">बहुत कम (1-2 लड़ी)</label>
+                        <label for="q7_very_low">(1-2 लड़ी)</label>
                     </div>
                     <div class="option">
                         <input type="radio" id="q7_low" name="q7" value="low">
-                        <label for="q7_low">कम (3-5 लड़ी)</label>
+                        <label for="q7_low">(3-5 लड़ी)</label>
                     </div>
                     <div class="option">
                         <input type="radio" id="q7_medium" name="q7" value="medium">
-                        <label for="q7_medium">मध्यम (6-10 लड़ी)</label>
+                        <label for="q7_medium">(6-10 लड़ी)</label>
                     </div>
                     <div class="option">
                         <input type="radio" id="q7_high" name="q7" value="high">
-                        <label for="q7_high">अच्छी (11-15 लड़ी)</label>
+                        <label for="q7_high">(11-15 लड़ी)</label>
                     </div>
                     <div class="option">
                         <input type="radio" id="q7_very_high" name="q7" value="very_high">
-                        <label for="q7_very_high">बहुत अच्छी (15+ लड़ी)</label>
+                        <label for="q7_very_high">(15+ लड़ी)</label>
                     </div>
                 </div>
                 <div class="error-message" id="q7-error"></div>
@@ -780,6 +1195,7 @@
                 <div class="error-message" id="q16-error"></div>
             </div>
 
+            <!-- Question 17 (Reorder frequency question) -->
             <div class="question-container" data-question="17">
                 <div class="question">17. आप कितने दिन में YiPPee! पास्ता मसाला को दोबारा मंगवाते हैं?</div>
                 <div class="options">
@@ -921,7 +1337,7 @@
                 <div class="error-message" id="q22-error"></div>
             </div>
 
-            <!-- Neither Aware Nor Selling Questions -->
+            <!-- Question 23 (Stocking question with 14.4% margin) -->
             <div class="question-container" data-question="23">
                 <div class="question">23. YiPPee! का एक पास्ता मसाला है जिसकी MRP ₹5 है और उस पर 14.4% मार्जिन है, क्या आप इसे स्टॉक करना चाहेंगे?</div>
                 <div class="product-showcase">
@@ -941,6 +1357,7 @@
                 <div class="error-message" id="q23-error"></div>
             </div>
 
+            <!-- Question 24 (Follow-up for "no" answers) -->
             <div class="question-container" data-question="24">
                 <div class="question">24. आप इसे स्टॉक करने के लिए किस वजह से प्रेरित होंगे?</div>
                 <div class="options">
@@ -982,11 +1399,19 @@
         let totalQuestions = 24;
         let userResponses = {};
         let questionFlow = [];
+        
+        // Cohort assignment for YiPPee noodles option
+        let cohort = Math.random() < 0.5 ? 'g' : 'h'; // 50% chance for cohort 'g'
 
         // Initialize survey
         function initializeSurvey() {
             updateProgress();
             document.getElementById('nextBtn').textContent = 'अगला';
+            
+            // Show YiPPee noodles option for cohort 'g'
+            if (cohort === 'g') {
+                document.getElementById('q3_yippee_noodles_option').style.display = 'flex';
+            }
         }
 
         // Validation functions
@@ -1071,7 +1496,7 @@
                     return 6;
                 
                 case 6:
-                    // Update Q7 with selected brand
+                    // Update Q7, Q8, Q9 with selected brand
                     const selectedBrand = userResponses.q6[0];
                     document.getElementById('q7-brand').textContent = selectedBrand;
                     document.getElementById('q8-brand').textContent = selectedBrand;
@@ -1086,7 +1511,7 @@
                 
                 case 9:
                     // Check if user is aware of YiPPee
-                    const isYiPPeeAware = userResponses.q3 && userResponses.q3.includes('yippee');
+                    const isYiPPeeAware = userResponses.q3 && (userResponses.q3.includes('yippee') || userResponses.q3.includes('yippee_noodles'));
                     const sellsYiPPee = userResponses.q4 && userResponses.q4.includes('yippee');
                     const soldYiPPee = userResponses.q5 && userResponses.q5.includes('yippee');
                     
@@ -1162,7 +1587,13 @@
                     return 'complete';
                 
                 case 23:
-                    return 24;
+                    // Check if they answered "no" to stocking question
+                    const willStock = userResponses.q23[0] === 'yes';
+                    if (willStock) {
+                        return 'complete';
+                    } else {
+                        return 24; // Follow-up for "no" answers
+                    }
                 
                 case 24:
                     return 'complete';
