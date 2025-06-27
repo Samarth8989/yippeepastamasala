@@ -149,7 +149,7 @@
         
         .navigation {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             margin-top: 32px;
             padding-top: 24px;
             border-top: 1px solid #eee;
@@ -180,16 +180,6 @@
         
         .btn-primary:hover {
             background: #c94d35;
-        }
-        
-        .btn-secondary {
-            background: #f7f7f7;
-            color: #333;
-            border: 1px solid #ddd;
-        }
-        
-        .btn-secondary:hover {
-            background: #efefef;
         }
         
         .btn:disabled {
@@ -259,36 +249,6 @@
             font-size: 16px;
             line-height: 1.5;
             margin-bottom: 8px;
-        }: center;
-            padding: 60px 40px;
-            border-radius: 20px;
-            margin: 30px 0;
-        }
-
-        .termination-message {
-            background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%);
-            color: #c53030;
-            border-left: 6px solid #e53e3e;
-        }
-
-        .completion-message {
-            background: linear-gradient(135deg, #c6f6d5 0%, #9ae6b4 100%);
-            color: #2f855a;
-            border-left: 6px solid #38a169;
-        }
-
-        .termination-message h2,
-        .completion-message h2 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .termination-message p,
-        .completion-message p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin-bottom: 15px;
         }
         
         .other-input {
@@ -469,13 +429,9 @@
                 font-size: 14px;
             }
         }
-
-        /* Remove floating elements styling */
     </style>
 </head>
 <body>
-    <!-- Floating background elements -->
-
     <div class="survey-container">
         <div class="survey-header">
             <h1>🍝 ITC YiPPee! बाजार सर्वेक्षण</h1>
@@ -527,7 +483,7 @@
                 </div>
             </div>
 
-            <!-- Question 2 -->
+            <!-- Question 2 - Changed to radio buttons for single select -->
             <div class="question-container" data-question="2">
                 <div class="question">2. आप एक महीने में कितना पास्ता मसाला बेचते हैं?</div>
                 <div class="options">
@@ -551,7 +507,7 @@
                 <div class="error-message" id="q2-error"></div>
             </div>
 
-            <!-- Question 3 with cohort 'g' modification -->
+            <!-- Question 3 - Removed option d -->
             <div class="question-container" data-question="3">
                 <div class="question">3. आप इनमें से कौन-कौन से पास्ता मसाला ब्रांड्स के बारे में जानते हैं?</div>
                 <div class="options" id="q3-options">
@@ -566,10 +522,6 @@
                     <div class="option">
                         <input type="checkbox" id="q3_bambinos" name="q3" value="bambinos">
                         <label for="q3_bambinos">बंबिनोस</label>
-                    </div>
-                    <div class="option">
-                        <input type="checkbox" id="q3_knorr" name="q3" value="knorr">
-                        <label for="q3_knorr">नॉर्स</label>
                     </div>
                     <div class="option">
                         <input type="checkbox" id="q3_catch" name="q3" value="catch">
@@ -597,7 +549,7 @@
                 <div class="error-message" id="q3-error"></div>
             </div>
 
-            <!-- Question 4 (removed "कोई नहीं" option) -->
+            <!-- Question 4 - Removed option d -->
             <div class="question-container" data-question="4">
                 <div class="question">4. वर्तमान में आप इनमें से कौन सा पास्ता मसाला बेचते हैं?</div>
                 <div class="options">
@@ -612,10 +564,6 @@
                     <div class="option">
                         <input type="checkbox" id="q4_bambinos" name="q4" value="bambinos">
                         <label for="q4_bambinos">बंबिनोस</label>
-                    </div>
-                    <div class="option">
-                        <input type="checkbox" id="q4_knorr" name="q4" value="knorr">
-                        <label for="q4_knorr">नॉर्स</label>
                     </div>
                     <div class="option">
                         <input type="checkbox" id="q4_catch" name="q4" value="catch">
@@ -638,7 +586,7 @@
                 <div class="error-message" id="q4-error"></div>
             </div>
 
-            <!-- Question 5 (removed "कोई नहीं" option) -->
+            <!-- Question 5 - Removed option d -->
             <div class="question-container" data-question="5">
                 <div class="question">5. आपने अब तक कौन सा पास्ता मसाला ब्रांड बेचना बंद कर दिया है?</div>
                 <div class="options">
@@ -653,10 +601,6 @@
                     <div class="option">
                         <input type="checkbox" id="q5_bambinos" name="q5" value="bambinos">
                         <label for="q5_bambinos">बंबिनोस</label>
-                    </div>
-                    <div class="option">
-                        <input type="checkbox" id="q5_knorr" name="q5" value="knorr">
-                        <label for="q5_knorr">नॉर्स</label>
                     </div>
                     <div class="option">
                         <input type="checkbox" id="q5_catch" name="q5" value="catch">
@@ -679,7 +623,7 @@
                 <div class="error-message" id="q5-error"></div>
             </div>
 
-            <!-- Question 6 -->
+            <!-- Question 6 - Removed option d -->
             <div class="question-container" data-question="6">
                 <div class="question">6. पिछले 1 महीने में सबसे ज्यादा बिकने वाला पास्ता मसाला ब्रांड कौन सा है?</div>
                 <div class="options">
@@ -694,10 +638,6 @@
                     <div class="option">
                         <input type="radio" id="q6_bambinos" name="q6" value="बंबिनोस">
                         <label for="q6_bambinos">बंबिनोस</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q6_knorr" name="q6" value="नॉर्स">
-                        <label for="q6_knorr">नॉर्स</label>
                     </div>
                     <div class="option">
                         <input type="radio" id="q6_catch" name="q6" value="कैच">
@@ -720,29 +660,29 @@
                 <div class="error-message" id="q6-error"></div>
             </div>
 
-            <!-- Question 7 (Modified to show only numbers) -->
+            <!-- Question 7 - Removed brackets -->
             <div class="question-container" data-question="7">
                 <div class="question" id="q7-text">7. आप <span id="q7-brand">___</span> पास्ता मसाला की हर महीने कितनी बिक्री करते हैं?</div>
                 <div class="options">
                     <div class="option">
                         <input type="radio" id="q7_very_low" name="q7" value="very_low">
-                        <label for="q7_very_low">(1-2 लड़ी)</label>
+                        <label for="q7_very_low">1-2 लड़ी</label>
                     </div>
                     <div class="option">
                         <input type="radio" id="q7_low" name="q7" value="low">
-                        <label for="q7_low">(3-5 लड़ी)</label>
+                        <label for="q7_low">3-5 लड़ी</label>
                     </div>
                     <div class="option">
                         <input type="radio" id="q7_medium" name="q7" value="medium">
-                        <label for="q7_medium">(6-10 लड़ी)</label>
+                        <label for="q7_medium">6-10 लड़ी</label>
                     </div>
                     <div class="option">
                         <input type="radio" id="q7_high" name="q7" value="high">
-                        <label for="q7_high">(11-15 लड़ी)</label>
+                        <label for="q7_high">11-15 लड़ी</label>
                     </div>
                     <div class="option">
                         <input type="radio" id="q7_very_high" name="q7" value="very_high">
-                        <label for="q7_very_high">(15+ लड़ी)</label>
+                        <label for="q7_very_high">15+ लड़ी</label>
                     </div>
                 </div>
                 <div class="error-message" id="q7-error"></div>
@@ -820,24 +760,25 @@
                 <div class="error-message" id="q10-error"></div>
             </div>
 
+            <!-- Question 11 - Updated price ranges -->
             <div class="question-container" data-question="11">
                 <div class="question">11. यिप्पी! पास्ता मसाला का खरीद रेट प्रति लड़ी क्या है?</div>
                 <div class="options">
                     <div class="option">
-                        <input type="radio" id="q11_104_88" name="q11" value="104.88">
-                        <label for="q11_104_88">₹ 104.88</label>
+                        <input type="radio" id="q11_100_102" name="q11" value="100-102">
+                        <label for="q11_100_102">₹ 100-102</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="q11_103" name="q11" value="103">
-                        <label for="q11_103">₹ 103</label>
+                        <input type="radio" id="q11_102_104" name="q11" value="102-104">
+                        <label for="q11_102_104">₹ 102-104</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="q11_105_12" name="q11" value="105.12">
-                        <label for="q11_105_12">₹ 105.12</label>
+                        <input type="radio" id="q11_104_106" name="q11" value="104-106">
+                        <label for="q11_104_106">₹ 104-106</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="q11_110" name="q11" value="110">
-                        <label for="q11_110">₹ 110</label>
+                        <input type="radio" id="q11_106_108" name="q11" value="106-108">
+                        <label for="q11_106_108">₹ 106-108</label>
                     </div>
                 </div>
                 <div class="error-message" id="q11-error"></div>
@@ -1136,7 +1077,7 @@
                 <div class="error-message" id="q22-error"></div>
             </div>
 
-            <!-- Question 23 (Stocking question with 14.4% margin) -->
+            <!-- Question 23 (Stocking question with 14.4% margin) - SHOWN TO EVERYONE -->
             <div class="question-container" data-question="23">
                 <div class="question">23. YiPPee! का एक पास्ता मसाला है जिसकी MRP ₹5 है और उस पर 14.4% मार्जिन है, क्या आप इसे स्टॉक करना चाहेंगे?</div>
                 <div class="product-showcase">
@@ -1207,7 +1148,6 @@
 
             <!-- Navigation -->
             <div class="navigation">
-                <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()" style="display: none;">पिछला</button>
                 <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">अगला</button>
             </div>
         </div>
@@ -1372,7 +1312,7 @@
             });
         }
 
-        // Determine next question based on logic
+        // Determine next question based on logic - Updated to always show Q23
         function getNextQuestion(currentQ) {
             switch(currentQ) {
                 case 1:
@@ -1395,36 +1335,36 @@
                     return 6;
                 
                 case 6:
-                    // Update Q7, Q9 with selected brand (Q8 removed)
+                    // Update Q7, Q8 with selected brand
                     const selectedBrand = userResponses.q6[0];
                     const q7Brand = document.getElementById('q7-brand');
-                    const q9Brand = document.getElementById('q9-brand');
+                    const q8Brand = document.getElementById('q8-brand');
                     if (q7Brand) q7Brand.textContent = selectedBrand;
-                    if (q9Brand) q9Brand.textContent = selectedBrand;
+                    if (q8Brand) q8Brand.textContent = selectedBrand;
                     return 7;
                 
                 case 7:
-                    return 9; // Skip Q8, go directly to Q9
+                    return 8; // Go to Q8 (previously Q9)
                 
-                case 9:
-                    // After Q9, check conditions for YiPPee questions
+                case 8:
+                    // After Q8, check conditions for YiPPee questions
                     if (shouldShowQuestion('yippee_aware')) {
                         return 10; // YiPPee aware questions
                     } else if (shouldShowQuestion('not_aware')) {
-                        return 23; // Not aware questions
+                        return 23; // Show Q23 to everyone
                     } else if (shouldShowQuestion('general')) {
-                        return 25; // General YiPPee noodles question
+                        return 23; // Show Q23 to everyone
                     } else {
-                        return 'complete';
+                        return 23; // Show Q23 to everyone
                     }
                 
                 case 10:
                     if (shouldShowQuestion('yippee_aware')) return 11;
-                    return 'complete';
+                    return 23; // Show Q23 to everyone
                 
                 case 11:
                     if (shouldShowQuestion('yippee_aware')) return 12;
-                    return 'complete';
+                    return 23; // Show Q23 to everyone
                 
                 case 12:
                     if (shouldShowQuestion('yippee_seller')) {
@@ -1432,16 +1372,16 @@
                     } else if (shouldShowQuestion('aware_not_selling')) {
                         return 21; // Aware but not selling
                     } else {
-                        return 'complete';
+                        return 23; // Show Q23 to everyone
                     }
                 
                 case 13:
                     if (shouldShowQuestion('yippee_seller')) return 14;
-                    return 'complete';
+                    return 23; // Show Q23 to everyone
                 
                 case 14:
                     if (shouldShowQuestion('yippee_seller')) return 15;
-                    return 'complete';
+                    return 23; // Show Q23 to everyone
                 
                 case 15:
                     const selectedVariant = userResponses.q15[0];
@@ -1460,7 +1400,7 @@
                 
                 case 16:
                     if (shouldShowQuestion('yippee_seller')) return 17;
-                    return 'complete';
+                    return 23; // Show Q23 to everyone
                 
                 case 17:
                     // Check for lapsers or reorder pattern
@@ -1468,42 +1408,38 @@
                     if (shouldShowQuestion('lapsers') || !reorders) {
                         return 18; // Lapsers questions
                     } else {
-                        return 'complete';
+                        return 23; // Show Q23 to everyone
                     }
                 
                 case 18:
                     if (shouldShowQuestion('lapsers')) return 19;
-                    return 'complete';
+                    return 23; // Show Q23 to everyone
                 
                 case 19:
                     if (shouldShowQuestion('yippee_seller')) return 20;
-                    return 'complete';
+                    return 23; // Show Q23 to everyone
                 
                 case 20:
-                    return 'complete';
+                    return 23; // Show Q23 to everyone
                 
                 case 21:
                     if (shouldShowQuestion('aware_not_selling')) return 22;
-                    return 'complete';
+                    return 23; // Show Q23 to everyone
                 
                 case 22:
-                    return 'complete';
+                    return 23; // Show Q23 to everyone
                 
                 case 23:
                     // Check if they answered "no" to stocking question
                     const willStock = userResponses.q23[0] === 'yes';
                     if (willStock) {
-                        return 'complete';
+                        return 25; // Go to YiPPee noodles question
                     } else {
                         return 24; // Follow-up for "no" answers
                     }
                 
                 case 24:
-                    if (shouldShowQuestion('general')) {
-                        return 25; // YiPPee noodles question
-                    } else {
-                        return 'complete';
-                    }
+                    return 25; // YiPPee noodles question
                 
                 case 25:
                     return 'complete';
@@ -1545,34 +1481,10 @@
             updateProgress();
         }
 
-        function previousQuestion() {
-            // Implementation for previous question (simplified)
-            if (currentQuestion > 1 && typeof currentQuestion === 'number') {
-                const currentElement = document.querySelector(`[data-question="${currentQuestion}"]`);
-                if (currentElement) {
-                    currentElement.classList.remove('active');
-                }
-                currentQuestion--;
-                const prevElement = document.querySelector(`[data-question="${currentQuestion}"]`);
-                if (prevElement) {
-                    prevElement.classList.add('active');
-                }
-                updateNavigation();
-                updateProgress();
-            }
-        }
-
         function updateNavigation() {
-            const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
             
-            if (!prevBtn || !nextBtn) return;
-            
-            if (currentQuestion === 1) {
-                prevBtn.style.display = 'none';
-            } else if (currentQuestion !== 'terminate' && currentQuestion !== 'complete') {
-                prevBtn.style.display = 'block';
-            }
+            if (!nextBtn) return;
             
             if (currentQuestion === 'complete' || currentQuestion === 'terminate') {
                 nextBtn.style.display = 'none';
@@ -1613,12 +1525,24 @@
                         }
                     }
                     
-                    // Handle exclusive options like "none"
+                    // Handle exclusive options like "none" in Q1
                     if (e.target.name.includes('q1') && e.target.value === 'none' && e.target.checked) {
                         // Uncheck other options when "none" is selected
                         const otherInputs = document.querySelectorAll('input[name="q1"]');
                         otherInputs.forEach(input => {
                             if (input !== e.target) input.checked = false;
+                        });
+                    }
+                    
+                    // Handle radio button selections for Q2
+                    if (e.target.type === 'radio') {
+                        // Clear all selected options for this question
+                        const allOptions = document.querySelectorAll(`input[name="${e.target.name}"]`);
+                        allOptions.forEach(input => {
+                            const parentOption = input.closest('.option');
+                            if (parentOption) {
+                                parentOption.classList.remove('selected');
+                            }
                         });
                     }
                     
