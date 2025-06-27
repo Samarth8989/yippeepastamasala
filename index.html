@@ -12,91 +12,60 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f7f7f7;
             min-height: 100vh;
-            padding: 20px;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(255, 107, 107, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(78, 205, 196, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(255, 183, 77, 0.2) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: -1;
+            padding: 24px;
+            margin: 0;
         }
         
         .survey-container {
-            max-width: 900px;
+            max-width: 760px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 25px;
-            box-shadow: 
-                0 25px 50px rgba(0,0,0,0.15),
-                0 0 0 1px rgba(255,255,255,0.2);
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.3);
         }
         
         .survey-header {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 50%, #ff9ff3 100%);
+            background: #DC5A41;
             color: white;
-            padding: 40px;
+            padding: 32px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
 
         .survey-header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-            animation: shimmer 3s infinite;
+            display: none;
         }
 
         @keyframes shimmer {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            display: none;
         }
         
         .survey-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 28px;
+            margin-bottom: 8px;
+            font-weight: 600;
             position: relative;
             z-index: 1;
         }
 
         .survey-header p {
-            font-size: 1.2rem;
+            font-size: 16px;
             opacity: 0.9;
             position: relative;
             z-index: 1;
+            margin: 0;
         }
         
         .survey-body {
-            padding: 50px;
-            background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(248,250,252,0.9) 100%);
+            padding: 32px;
         }
         
         .question-container {
             display: none;
-            animation: slideInRight 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeIn 0.3s ease;
         }
         
         .question-container.active {
@@ -104,83 +73,56 @@
         }
         
         @keyframes slideInRight {
-            from { 
-                opacity: 0; 
-                transform: translateX(50px) rotateY(-15deg); 
-            }
-            to { 
-                opacity: 1; 
-                transform: translateX(0) rotateY(0deg); 
-            }
+            display: none;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
         .question {
-            font-size: 1.4rem;
-            color: #2d3748;
-            margin-bottom: 30px;
-            line-height: 1.7;
+            font-size: 20px;
+            color: #222;
+            margin-bottom: 24px;
+            line-height: 1.4;
             font-weight: 600;
-            text-align: center;
-            padding: 25px;
-            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-            border-radius: 20px;
-            border-left: 6px solid #667eea;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
         }
         
         .options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
         
         .option {
             display: flex;
             align-items: center;
-            padding: 20px 25px;
-            border: 3px solid #e2e8f0;
-            border-radius: 15px;
+            padding: 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            position: relative;
-            overflow: hidden;
+            transition: all 0.2s ease;
+            background: white;
         }
 
         .option::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
-            transition: left 0.5s;
+            display: none;
         }
         
         .option:hover {
-            border-color: #667eea;
-            background: linear-gradient(135deg, #f0f4ff 0%, #e6f3ff 100%);
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.2);
+            border-color: #DC5A41;
+            background: #fdf7f6;
         }
 
         .option:hover::before {
-            left: 100%;
+            display: none;
         }
         
         .option.selected {
-            border-color: #667eea;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: #DC5A41;
+            background: #DC5A41;
             color: white;
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
         }
 
         .option.selected label {
@@ -189,9 +131,8 @@
         
         .option input[type="checkbox"],
         .option input[type="radio"] {
-            margin-right: 18px;
-            transform: scale(1.4);
-            accent-color: #667eea;
+            margin-right: 12px;
+            accent-color: #DC5A41;
         }
 
         .option.selected input[type="checkbox"],
@@ -202,71 +143,53 @@
         .option label {
             cursor: pointer;
             flex: 1;
-            font-size: 1.1rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
+            font-size: 16px;
+            font-weight: 400;
         }
         
         .navigation {
             display: flex;
             justify-content: space-between;
-            margin-top: 50px;
-            padding-top: 40px;
-            border-top: 2px solid #e2e8f0;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid #eee;
         }
         
         .btn {
-            padding: 16px 40px;
+            padding: 14px 24px;
             border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
+            border-radius: 8px;
+            font-size: 16px;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
+            transition: all 0.2s ease;
+            font-weight: 600;
         }
 
         .btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255,255,255,0.3);
-            border-radius: 50%;
-            transition: all 0.4s ease;
-            transform: translate(-50%, -50%);
+            display: none;
         }
 
         .btn:hover::before {
-            width: 300px;
-            height: 300px;
+            display: none;
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #DC5A41;
             color: white;
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
         }
         
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+            background: #c94d35;
         }
         
         .btn-secondary {
-            background: linear-gradient(135deg, #f1f3f4 0%, #e8eaed 100%);
+            background: #f7f7f7;
             color: #333;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
         }
         
         .btn-secondary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+            background: #efefef;
         }
         
         .btn:disabled {
@@ -276,57 +199,67 @@
         }
         
         .progress-bar {
-            height: 8px;
-            background: rgba(255,255,255,0.3);
+            height: 4px;
+            background: #f0f0f0;
             margin-bottom: 0;
-            position: relative;
-            overflow: hidden;
         }
 
         .progress-bar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            animation: loading 2s infinite;
+            display: none;
         }
 
         @keyframes loading {
-            0% { left: -100%; }
-            100% { left: 100%; }
+            display: none;
         }
         
         .progress-fill {
             height: 100%;
-            background: linear-gradient(135deg, #48bb78 0%, #38a169 50%, #2f855a 100%);
-            transition: width 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: #DC5A41;
+            transition: width 0.3s ease;
             width: 0%;
-            position: relative;
-            overflow: hidden;
         }
 
         .progress-fill::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: progress-shimmer 2s infinite;
+            display: none;
         }
 
         @keyframes progress-shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+            display: none;
         }
         
         .termination-message,
         .completion-message {
             text-align: center;
+            padding: 32px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .termination-message {
+            background: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+        }
+
+        .completion-message {
+            background: #f0f9ff;
+            color: #0369a1;
+            border: 1px solid #bae6fd;
+        }
+
+        .termination-message h2,
+        .completion-message h2 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .termination-message p,
+        .completion-message p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }: center;
             padding: 60px 40px;
             border-radius: 20px;
             margin: 30px 0;
@@ -359,158 +292,122 @@
         }
         
         .other-input {
-            margin-top: 15px;
-            padding: 15px 20px;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
+            margin-top: 12px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
             width: 100%;
             display: none;
-            font-size: 1rem;
-            transition: all 0.3s ease;
+            font-size: 14px;
             background: white;
         }
 
         .other-input:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #DC5A41;
+            box-shadow: 0 0 0 2px rgba(220, 90, 65, 0.1);
         }
         
         .other-input.show {
             display: block;
-            animation: slideDown 0.3s ease;
         }
 
         @keyframes slideDown {
             from { opacity: 0; max-height: 0; }
-            to { opacity: 1; max-height: 100px; }
+            to { opacity: 1; max-height: 60px; }
         }
 
         .error-message {
-            color: #e53e3e;
-            background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%);
-            padding: 15px 20px;
-            border-radius: 12px;
-            margin-top: 20px;
+            color: #dc2626;
+            background: #fef2f2;
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 12px;
             display: none;
-            font-weight: 600;
-            border-left: 4px solid #e53e3e;
-            animation: shake 0.5s ease-in-out;
+            font-weight: 500;
+            border: 1px solid #fecaca;
+            font-size: 14px;
         }
 
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
-            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-            20%, 40%, 60%, 80% { transform: translateX(5px); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-3px); }
+            20%, 40%, 60%, 80% { transform: translateX(3px); }
         }
 
         .variant-images {
             display: flex;
-            gap: 30px;
+            gap: 16px;
             justify-content: center;
-            margin: 30px 0;
+            margin: 20px 0;
             flex-wrap: wrap;
         }
 
         .variant-option {
             text-align: center;
-            padding: 25px;
-            border: 3px solid #e2e8f0;
-            border-radius: 20px;
+            padding: 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.2s ease;
             background: white;
-            position: relative;
-            overflow: hidden;
+            min-width: 120px;
         }
 
         .variant-option::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.1), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.6s ease;
+            display: none;
         }
 
         .variant-option:hover::before {
-            transform: translateX(100%);
+            display: none;
         }
 
         .variant-option:hover {
-            border-color: #667eea;
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-color: #DC5A41;
         }
 
         .variant-option.selected {
-            border-color: #667eea;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: #DC5A41;
+            background: #DC5A41;
             color: white;
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.3);
         }
 
         .variant-image {
-            width: 100px;
-            height: 100px;
-            border-radius: 15px;
-            margin-bottom: 15px;
+            width: 80px;
+            height: 80px;
+            border-radius: 6px;
+            margin: 0 auto 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 600;
             color: white;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-            position: relative;
-            overflow: hidden;
         }
 
         .variant-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.8s ease;
+            display: none;
         }
 
         .variant-option:hover .variant-image::after {
-            transform: translateX(100%);
+            display: none;
         }
 
         .product-showcase {
             text-align: center;
-            margin: 30px 0;
-            padding: 30px;
-            background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
-            border-radius: 20px;
-            border: 2px solid #e2e8f0;
-            position: relative;
-            overflow: hidden;
+            margin: 20px 0;
+            padding: 24px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid #eee;
         }
 
         .product-showcase::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
-            animation: rotate 10s linear infinite;
+            display: none;
         }
 
         @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            display: none;
         }
 
         .product-showcase > * {
@@ -519,155 +416,65 @@
         }
 
         .product-showcase img {
-            max-width: 250px;
+            max-width: 200px;
             height: auto;
-            margin: 15px;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            margin: 12px;
+            border-radius: 6px;
         }
 
         /* Enhanced mobile responsiveness */
         @media (max-width: 768px) {
             .survey-container {
-                margin: 10px;
-                border-radius: 20px;
+                margin: 16px;
+                border-radius: 8px;
             }
             
             .survey-header {
-                padding: 30px 20px;
+                padding: 24px 20px;
             }
             
             .survey-header h1 {
-                font-size: 2rem;
+                font-size: 24px;
             }
             
             .survey-body {
-                padding: 30px 25px;
+                padding: 24px 20px;
             }
             
             .question {
-                font-size: 1.2rem;
-                padding: 20px;
-            }
-            
-            .options {
-                grid-template-columns: 1fr;
-                gap: 15px;
+                font-size: 18px;
+                margin-bottom: 20px;
             }
             
             .option {
-                padding: 18px 20px;
+                padding: 14px 16px;
             }
             
             .variant-images {
-                gap: 20px;
+                gap: 12px;
             }
             
             .variant-option {
-                padding: 20px;
+                padding: 16px 12px;
+                min-width: 100px;
             }
             
             .variant-image {
-                width: 80px;
-                height: 80px;
+                width: 60px;
+                height: 60px;
             }
             
             .btn {
-                padding: 14px 30px;
-                font-size: 1rem;
+                padding: 12px 20px;
+                font-size: 14px;
             }
         }
 
-        /* Special styling for number-only display in Q7 */
-        .q7-options .option label {
-            position: relative;
-        }
-
-        .q7-options .option label::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            color: #667eea;
-        }
-
-        .q7-options .option:nth-child(1) label::before { content: '1'; }
-        .q7-options .option:nth-child(2) label::before { content: '2'; }
-        .q7-options .option:nth-child(3) label::before { content: '3'; }
-        .q7-options .option:nth-child(4) label::before { content: '4'; }
-        .q7-options .option:nth-child(5) label::before { content: '5'; }
-
-        .q7-options .option label {
-            padding-left: 40px;
-        }
-
-        /* Floating elements animation */
-        .floating-elements {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .floating-element {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: float 15s infinite linear;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-10vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        .floating-element:nth-child(1) { left: 10%; animation-delay: 0s; }
-        .floating-element:nth-child(2) { left: 20%; animation-delay: 2s; }
-        .floating-element:nth-child(3) { left: 30%; animation-delay: 4s; }
-        .floating-element:nth-child(4) { left: 40%; animation-delay: 6s; }
-        .floating-element:nth-child(5) { left: 50%; animation-delay: 8s; }
-        .floating-element:nth-child(6) { left: 60%; animation-delay: 10s; }
-        .floating-element:nth-child(7) { left: 70%; animation-delay: 12s; }
-        .floating-element:nth-child(8) { left: 80%; animation-delay: 14s; }
-        .floating-element:nth-child(9) { left: 90%; animation-delay: 16s; }
+        /* Remove floating elements styling */
     </style>
 </head>
 <body>
     <!-- Floating background elements -->
-    <div class="floating-elements">
-        <div class="floating-element"></div>
-        <div class="floating-element"></div>
-        <div class="floating-element"></div>
-        <div class="floating-element"></div>
-        <div class="floating-element"></div>
-        <div class="floating-element"></div>
-        <div class="floating-element"></div>
-        <div class="floating-element"></div>
-        <div class="floating-element"></div>
-    </div>
 
     <div class="survey-container">
         <div class="survey-header">
@@ -874,7 +681,7 @@
 
             <!-- Question 6 -->
             <div class="question-container" data-question="6">
-                <div class="question">6. आप मुख्यतः कौन सा पास्ता मसाला ब्रांड बेचते हैं?</div>
+                <div class="question">6. पिछले 1 महीने में सबसे ज्यादा बिकने वाला पास्ता मसाला ब्रांड कौन सा है?</div>
                 <div class="options">
                     <div class="option">
                         <input type="radio" id="q6_everest" name="q6" value="एवरेस्ट">
@@ -916,7 +723,7 @@
             <!-- Question 7 (Modified to show only numbers) -->
             <div class="question-container" data-question="7">
                 <div class="question" id="q7-text">7. आप <span id="q7-brand">___</span> पास्ता मसाला की हर महीने कितनी बिक्री करते हैं?</div>
-                <div class="options q7-options">
+                <div class="options">
                     <div class="option">
                         <input type="radio" id="q7_very_low" name="q7" value="very_low">
                         <label for="q7_very_low">(1-2 लड़ी)</label>
@@ -941,57 +748,49 @@
                 <div class="error-message" id="q7-error"></div>
             </div>
 
-            <!-- Question 8 (Dynamic) -->
+            <!-- Question 8 (Updated to Question 9 with new text and options) -->
             <div class="question-container" data-question="8">
-                <div class="question" id="q8-text">8. <span id="q8-brand">___</span> पास्ता मसाला के लिए आपको कितना मार्जिन मिलता है?</div>
+                <div class="question" id="q8-text">8. <span id="q8-brand">___</span> SKU की 1 लड़ी पर आपको MRP से कितना मार्जिन मिलता है?</div>
                 <div class="options">
                     <div class="option">
-                        <input type="radio" id="q8_5_10" name="q8" value="5-10">
-                        <label for="q8_5_10">5-10%</label>
+                        <input type="radio" id="q8_less_5" name="q8" value="<5%">
+                        <label for="q8_less_5">&lt;5%</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="q8_10_15" name="q8" value="10-15">
-                        <label for="q8_10_15">10-15%</label>
+                        <input type="radio" id="q8_5_10" name="q8" value="5%-10%">
+                        <label for="q8_5_10">5%-10%</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="q8_15_20" name="q8" value="15-20">
-                        <label for="q8_15_20">15-20%</label>
+                        <input type="radio" id="q8_10_15" name="q8" value="10%-15%">
+                        <label for="q8_10_15">10%-15%</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="q8_20_plus" name="q8" value="20+">
-                        <label for="q8_20_plus">20% से अधिक</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q8_dont_know" name="q8" value="dont_know">
-                        <label for="q8_dont_know">पता नहीं</label>
+                        <input type="radio" id="q8_more_15" name="q8" value=">15%">
+                        <label for="q8_more_15">&gt;15%</label>
                     </div>
                 </div>
                 <div class="error-message" id="q8-error"></div>
             </div>
 
-            <!-- Question 9 (Dynamic) -->
+            <!-- Question 9 (Updated with margin question) -->
             <div class="question-container" data-question="9">
-                <div class="question" id="q9-text">9. <span id="q9-brand">___</span> पास्ता मसाला की गुणवत्ता के बारे में आपकी क्या राय है?</div>
+                <div class="question" id="q9-text">9. <span id="q9-brand">___</span> SKU की 1 लड़ी पर आपको MRP से कितना मार्जिन मिलता है?</div>
                 <div class="options">
                     <div class="option">
-                        <input type="radio" id="q9_excellent" name="q9" value="excellent">
-                        <label for="q9_excellent">बहुत अच्छी</label>
+                        <input type="radio" id="q9_less_5" name="q9" value="<5%">
+                        <label for="q9_less_5">&lt;5%</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="q9_good" name="q9" value="good">
-                        <label for="q9_good">अच्छी</label>
+                        <input type="radio" id="q9_5_10" name="q9" value="5%-10%">
+                        <label for="q9_5_10">5%-10%</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="q9_average" name="q9" value="average">
-                        <label for="q9_average">सामान्य</label>
+                        <input type="radio" id="q9_10_15" name="q9" value="10%-15%">
+                        <label for="q9_10_15">10%-15%</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="q9_poor" name="q9" value="poor">
-                        <label for="q9_poor">खराब</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" id="q9_very_poor" name="q9" value="very_poor">
-                        <label for="q9_very_poor">बहुत खराब</label>
+                        <input type="radio" id="q9_more_15" name="q9" value=">15%">
+                        <label for="q9_more_15">&gt;15%</label>
                     </div>
                 </div>
                 <div class="error-message" id="q9-error"></div>
@@ -1319,7 +1118,7 @@
             </div>
 
             <div class="question-container" data-question="22">
-                <div class="question">22. क्या बात आपको इसे स्टॉक करने के लिए प्रेरित करेगी?</div>
+                <div class="question">22. आप इसे स्टॉक करने के लिए किस वजह से प्रेरित होंगे?</div>
                 <div class="options">
                     <div class="option">
                         <input type="radio" id="q22_better_margin" name="q22" value="better_margin">
@@ -1331,7 +1130,7 @@
                     </div>
                     <div class="option">
                         <input type="radio" id="q22_easy_stock" name="q22" value="easy_stock">
-                        <label for="q22_easy_stock">आसानी से उपलब्ध स्टॉक</label>
+                        <label for="q22_easy_stock">आसानी से स्टॉक मिलना</label>
                     </div>
                 </div>
                 <div class="error-message" id="q22-error"></div>
@@ -1377,6 +1176,26 @@
                 <div class="error-message" id="q24-error"></div>
             </div>
 
+            <!-- Question 25: YiPPee noodles question (for all) -->
+            <div class="question-container" data-question="25">
+                <div class="question">25. क्या आप YippEE नूडल्स बेचते हैं?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q25_5_10_pack" name="q25" value="yes_5_10_pack">
+                        <label for="q25_5_10_pack">हाँ, ₹5/₹10 पैक</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q25_other_pack" name="q25" value="yes_other_pack">
+                        <label for="q25_other_pack">हाँ, अन्य पैक साइज</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q25_no" name="q25" value="no">
+                        <label for="q25_no">नहीं</label>
+                    </div>
+                </div>
+                <div class="error-message" id="q25-error"></div>
+            </div>
+
             <!-- Completion Message -->
             <div class="question-container" data-question="complete">
                 <div class="completion-message">
@@ -1396,12 +1215,92 @@
 
     <script>
         let currentQuestion = 1;
-        let totalQuestions = 24;
+        let totalQuestions = 25;
         let userResponses = {};
         let questionFlow = [];
         
         // Cohort assignment for YiPPee noodles option
         let cohort = Math.random() < 0.5 ? 'g' : 'h'; // 50% chance for cohort 'g'
+        
+        // Helper functions for conditional logic
+        function checkCondition1e() {
+            return userResponses.q1 && userResponses.q1.includes('pasta_masala');
+        }
+        
+        function checkCondition1f() {
+            return userResponses.q1 && userResponses.q1.includes('none');
+        }
+        
+        function checkCondition3g() {
+            return userResponses.q3 && (userResponses.q3.includes('yippee') || userResponses.q3.includes('yippee_noodles'));
+        }
+        
+        function checkCondition4g() {
+            return userResponses.q4 && userResponses.q4.includes('yippee');
+        }
+        
+        function checkCondition5g() {
+            return userResponses.q5 && userResponses.q5.includes('yippee');
+        }
+        
+        function checkCondition36d() {
+            return userResponses.q17 && userResponses.q17.includes('no_reorder');
+        }
+        
+        function checkCondition33a() {
+            return userResponses.q15 && userResponses.q15.includes('blue');
+        }
+        
+        function checkCondition33b() {
+            return userResponses.q15 && userResponses.q15.includes('red');
+        }
+        
+        function checkCondition33c() {
+            return userResponses.q15 && userResponses.q15.includes('both');
+        }
+
+        // Check if question should be shown based on conditions
+        function shouldShowQuestion(questionLogic) {
+            const condition1e = checkCondition1e();
+            const condition1f = checkCondition1f();
+            const condition3g = checkCondition3g();
+            const condition4g = checkCondition4g();
+            const condition5g = checkCondition5g();
+            const condition36d = checkCondition36d();
+            const condition33a = checkCondition33a();
+            const condition33b = checkCondition33b();
+            const condition33c = checkCondition33c();
+            
+            switch(questionLogic) {
+                case 'yippee_aware':
+                    return condition1e && !condition1f && condition3g;
+                    
+                case 'yippee_seller':
+                    return condition1e && !condition1f && condition3g && (condition4g || condition5g) && !(condition4g && condition5g);
+                    
+                case 'variant_conditional':
+                    return condition1e && !condition1f && (condition33a || condition33b) && !(condition4g && condition5g && condition33b && !condition33c);
+                    
+                case 'lapsers':
+                    return condition1e && !condition1f && condition36d && !(condition4g && condition5g);
+                    
+                case 'stopped_selling':
+                    return condition1e && !condition1f && condition3g && condition5g && !(condition4g && condition5g);
+                    
+                case 'aware_not_selling':
+                    return (condition1e && !condition1f && !condition3g && !(condition4g || condition5g) && !(condition4g && condition5g)) || 
+                           (condition1e && !condition1f && condition3g && !(condition4g || condition5g) && !(condition4g && condition5g));
+                    
+                case 'not_aware':
+                    return condition1e && !condition1f && !condition3g && !(condition4g || condition5g) && !(condition4g && condition5g);
+                    
+                case 'general':
+                    return condition1e && !condition1f;
+                    
+                default:
+                    return true;
+            }
+        }
 
         // Initialize survey
         function initializeSurvey() {
@@ -1496,92 +1395,96 @@
                     return 6;
                 
                 case 6:
-                    // Update Q7, Q8, Q9 with selected brand
+                    // Update Q7, Q9 with selected brand (Q8 removed)
                     const selectedBrand = userResponses.q6[0];
-                    document.getElementById('q7-brand').textContent = selectedBrand;
-                    document.getElementById('q8-brand').textContent = selectedBrand;
-                    document.getElementById('q9-brand').textContent = selectedBrand;
+                    const q7Brand = document.getElementById('q7-brand');
+                    const q9Brand = document.getElementById('q9-brand');
+                    if (q7Brand) q7Brand.textContent = selectedBrand;
+                    if (q9Brand) q9Brand.textContent = selectedBrand;
                     return 7;
                 
                 case 7:
-                    return 8;
-                
-                case 8:
-                    return 9;
+                    return 9; // Skip Q8, go directly to Q9
                 
                 case 9:
-                    // Check if user is aware of YiPPee
-                    const isYiPPeeAware = userResponses.q3 && (userResponses.q3.includes('yippee') || userResponses.q3.includes('yippee_noodles'));
-                    const sellsYiPPee = userResponses.q4 && userResponses.q4.includes('yippee');
-                    const soldYiPPee = userResponses.q5 && userResponses.q5.includes('yippee');
-                    
-                    if (isYiPPeeAware) {
+                    // After Q9, check conditions for YiPPee questions
+                    if (shouldShowQuestion('yippee_aware')) {
                         return 10; // YiPPee aware questions
+                    } else if (shouldShowQuestion('not_aware')) {
+                        return 23; // Not aware questions
+                    } else if (shouldShowQuestion('general')) {
+                        return 25; // General YiPPee noodles question
                     } else {
-                        return 23; // Neither aware nor selling
+                        return 'complete';
                     }
                 
                 case 10:
-                    return 11;
+                    if (shouldShowQuestion('yippee_aware')) return 11;
+                    return 'complete';
                 
                 case 11:
-                    return 12;
+                    if (shouldShowQuestion('yippee_aware')) return 12;
+                    return 'complete';
                 
                 case 12:
-                    const sellsYiPPeeQ4 = userResponses.q4 && userResponses.q4.includes('yippee');
-                    const soldYiPPeeQ5 = userResponses.q5 && userResponses.q5.includes('yippee');
-                    
-                    if (sellsYiPPeeQ4 || soldYiPPeeQ5) {
+                    if (shouldShowQuestion('yippee_seller')) {
                         return 13; // Sellers questions
-                    } else {
+                    } else if (shouldShowQuestion('aware_not_selling')) {
                         return 21; // Aware but not selling
+                    } else {
+                        return 'complete';
                     }
                 
                 case 13:
-                    return 14;
+                    if (shouldShowQuestion('yippee_seller')) return 14;
+                    return 'complete';
                 
                 case 14:
-                    return 15;
+                    if (shouldShowQuestion('yippee_seller')) return 15;
+                    return 'complete';
                 
                 case 15:
                     const selectedVariant = userResponses.q15[0];
-                    if (selectedVariant === 'blue') {
-                        return '15a';
-                    } else if (selectedVariant === 'red') {
-                        return '15b';
-                    } else {
-                        return 16;
+                    if (shouldShowQuestion('variant_conditional')) {
+                        if (selectedVariant === 'blue') {
+                            return '15a';
+                        } else if (selectedVariant === 'red') {
+                            return '15b';
+                        }
                     }
+                    return 16;
                 
                 case '15a':
                 case '15b':
                     return 16;
                 
                 case 16:
-                    return 17;
+                    if (shouldShowQuestion('yippee_seller')) return 17;
+                    return 'complete';
                 
                 case 17:
-                    // Check if they reorder or not
+                    // Check for lapsers or reorder pattern
                     const reorders = userResponses.q17[0] !== 'no_reorder';
-                    const isLapser = userResponses.q5 && userResponses.q5.includes('yippee');
-                    
-                    if (!reorders || isLapser) {
+                    if (shouldShowQuestion('lapsers') || !reorders) {
                         return 18; // Lapsers questions
                     } else {
                         return 'complete';
                     }
                 
                 case 18:
-                    return 19;
+                    if (shouldShowQuestion('lapsers')) return 19;
+                    return 'complete';
                 
                 case 19:
-                    return 20;
+                    if (shouldShowQuestion('yippee_seller')) return 20;
+                    return 'complete';
                 
                 case 20:
                     return 'complete';
                 
                 case 21:
-                    return 22;
+                    if (shouldShowQuestion('aware_not_selling')) return 22;
+                    return 'complete';
                 
                 case 22:
                     return 'complete';
@@ -1596,6 +1499,13 @@
                     }
                 
                 case 24:
+                    if (shouldShowQuestion('general')) {
+                        return 25; // YiPPee noodles question
+                    } else {
+                        return 'complete';
+                    }
+                
+                case 25:
                     return 'complete';
                 
                 default:
@@ -1618,11 +1528,17 @@
             const nextQ = getNextQuestion(currentQuestion);
             
             // Hide current question
-            document.querySelector(`[data-question="${currentQuestion}"]`).classList.remove('active');
+            const currentElement = document.querySelector(`[data-question="${currentQuestion}"]`);
+            if (currentElement) {
+                currentElement.classList.remove('active');
+            }
             
             // Show next question
             currentQuestion = nextQ;
-            document.querySelector(`[data-question="${currentQuestion}"]`).classList.add('active');
+            const nextElement = document.querySelector(`[data-question="${currentQuestion}"]`);
+            if (nextElement) {
+                nextElement.classList.add('active');
+            }
             
             // Update navigation
             updateNavigation();
@@ -1631,10 +1547,16 @@
 
         function previousQuestion() {
             // Implementation for previous question (simplified)
-            if (currentQuestion > 1) {
-                document.querySelector(`[data-question="${currentQuestion}"]`).classList.remove('active');
+            if (currentQuestion > 1 && typeof currentQuestion === 'number') {
+                const currentElement = document.querySelector(`[data-question="${currentQuestion}"]`);
+                if (currentElement) {
+                    currentElement.classList.remove('active');
+                }
                 currentQuestion--;
-                document.querySelector(`[data-question="${currentQuestion}"]`).classList.add('active');
+                const prevElement = document.querySelector(`[data-question="${currentQuestion}"]`);
+                if (prevElement) {
+                    prevElement.classList.add('active');
+                }
                 updateNavigation();
                 updateProgress();
             }
@@ -1643,6 +1565,8 @@
         function updateNavigation() {
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
+            
+            if (!prevBtn || !nextBtn) return;
             
             if (currentQuestion === 1) {
                 prevBtn.style.display = 'none';
@@ -1666,7 +1590,10 @@
                 progress = 100;
             }
             
-            document.getElementById('progressFill').style.width = progress + '%';
+            const progressFill = document.getElementById('progressFill');
+            if (progressFill) {
+                progressFill.style.width = progress + '%';
+            }
         }
 
         // Event listeners for options
